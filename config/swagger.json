@@ -1,0 +1,574 @@
+{
+    "swagger": "2.0",
+    "title": "Vidly API Documentation",
+    "description": "Video Rental for users around the city",
+    "version": "2.0.0",
+      "host": "localhost:3000",
+      "basePath": "/api",
+      "tags": [
+        {
+          "name": "Rent ",
+          "description": "API for Online Movie Rental Endpoints"
+        }
+      ],
+      "schemes": ["http"],
+      "consumes": ["application/json"],
+      "produces": ["application/json"],
+      "paths":{
+            "/users":{
+              "get":{
+                "tags":["User"],
+                "summary":"API for get users",
+                "description":"Get all users present in db",
+                "produces":["application/json"],
+                "responses":{
+                  "200":{
+                    "description":"Got all users in db",
+                    "schema":{
+                      "$ref":"#definitions/Users"
+                    }
+                  }
+                }  
+              },
+              "post":{
+                "tags":["User"],
+                "summary":"API for create users",
+                "description":"create users present in db",
+                
+                "parameters":[
+                  {
+                    "name":"Users",
+                    "description":"User params to create new user",
+                    "in":"body",
+                    "required":"true",
+                    "schema":{
+                      "$ref":"#definitions/User"
+                    }
+                  }
+                ],
+                "produces":["application/json"],
+                "responses":{
+                  "200":{
+                    "description":"New User Created",
+                    "schema":{
+                      "$ref":"#definitions/User"
+                    }
+                  }
+                }
+              }
+              
+            },
+            "/customers":{
+                "get":{
+                  "tags":["Customers"],
+                  "summary":"API for get customers",
+                "description":"Get all Customers present in db",
+                "produces":["application/json"],
+                "responses":{
+                  "200":{
+                    "description":"Got all customers in db",
+                    "schema":{
+                      "$ref":"#definitions/Customers"
+                    }
+                  }
+                }
+
+                  
+                },
+                "post":{
+                  "tags":["Customers"],
+                "summary":"API for create customers",
+                "description":"create customers present in db",
+                
+                "parameters":[
+                  {
+                    "name":"Customers",
+                    "description":"Customer params to create new customer",
+                    "in":"body",
+                    "required":"true",
+                    "schema":{
+                      "$ref":"#definitions/Customers"
+                    }
+                  }
+                ],
+                "produces":["application/json"],
+                "responses":{
+                  "200":{
+                    "description":"New Customer Created",
+                    "schema":{
+                      "$ref":"#definitions/Customers"
+                    }
+                  }
+                }
+                }
+            },
+            "/customers/{id}":{
+              "parameters":[
+                 {
+                   "name" : "id",
+                    "in": "path",
+                    "required": "true",
+                    "description": "id of the customer",
+                    "type": "string"
+    
+                 }
+              ],
+              "get":{
+                "tags": ["Customers"],
+                "summary": "API Endpoint to find single Customer",
+                "description" : "Find one from the database",
+                "produces" : ["application/json"],
+                "responses":{
+                  "200":{
+                    "description" : "Customer has found",
+                    "schema": {
+                     "$ref" : "#definitions/Customers"
+                    }
+                  }
+                }
+              },
+              "put":{
+                "tags": ["Customers"],
+                "summary": "API Endpoint for update Customer detail",
+                "description" : "Update the existing Customer in database",
+                "parameters":[
+                  {
+                    "name": "customer",
+                    "description": "Customer params to update the Customer detail",
+                    "in": "body",
+                    "schema" : {
+                      "$ref" : "#definitions/Customers"
+                    }
+                  }
+                ],
+                "produces" : ["application/json"],
+                "responses":{
+                  "200":{
+                    "description" : "Customer details has Updated",
+                    "schema": {
+                     "$ref" : "#definitions/Customers"
+                    }
+                  }
+                }
+              },
+              "delete":{
+                "tags": ["Customers"],
+                "summary": "API Endpoint to delete the Customer's details",
+                "description" : "Delete customer detail from the database",
+                "produces" : ["application/json"],
+                "responses":{
+                  "200":{
+                    "description" : "Customer's detail has deleted",
+                    "schema": {
+                     "$ref" : "#definitions/Customers"
+                    }
+                  }
+                }
+              }
+            },
+            "/genres":{
+              "get":{
+                "tags":["Genres"],
+                  "summary":"API for get Genres",
+                "description":"Get all Genres present in db",
+                "produces":["application/json"],
+                "responses":{
+                  "200":{
+                    "description":"Got all Genres in db",
+                    "schema":{
+                      "$ref":"#definitions/Genre"
+                    }
+                  }
+                }
+              },
+              "post":{
+                "tags":["Genres"],
+              "summary":"API for create Genres",
+              "description":"create genres present in db",
+              
+              "parameters":[
+                {
+                  "name":"Genres",
+                  "description":"Genre params to create new genres",
+                  "in":"body",
+                  "required":"true",
+                  "schema":{
+                    "$ref":"#definitions/Genres"
+                  }
+                }
+              ],
+              "produces":["application/json"],
+              "responses":{
+                "200":{
+                  "description":"New Genre Created",
+                  "schema":{
+                    "$ref":"#definitions/Genres"
+                  }
+                }
+              }
+              }
+            },
+            "/genres/{id}":{
+              "parameters":[
+                 {
+                   "name" : "id",
+                    "in": "path",
+                    "required": "true",
+                    "description": "id of the genre",
+                    "type": "string"
+    
+                 }
+              ],
+              "get":{
+                "tags": ["Genres"],
+                "summary": "API Endpoint to find single Genre",
+                "description" : "Find one from the database",
+                "produces" : ["application/json"],
+                "responses":{
+                  "200":{
+                    "description" : "Genre has found",
+                    "schema": {
+                     "$ref" : "#definitions/Genres"
+                    }
+                  }
+                }
+              },
+              "put":{
+                "tags": ["Genres"],
+                "summary": "API Endpoint for update genre detail",
+                "description" : "Update the existing genre in database",
+                "parameters":[
+                  {
+                    "name": "genre",
+                    "description": "genre params to update the genre detail",
+                    "in": "body",
+                    "schema" : {
+                      "$ref" : "#definitions/Genres"
+                    }
+                  }
+                ],
+                "produces" : ["application/json"],
+                "responses":{
+                  "200":{
+                    "description" : "Genre details has Updated",
+                    "schema": {
+                     "$ref" : "#definitions/Genres"
+                    }
+                  }
+                }
+              },
+              "delete":{
+                "tags": ["Genres"],
+                "summary": "API Endpoint to delete the Genre details",
+                "description" : "Delete genre detail from the database",
+                "produces" : ["application/json"],
+                "responses":{
+                  "200":{
+                    "description" : "Genre detail has deleted",
+                    "schema": {
+                     "$ref" : "#definitions/Genres"
+                    }
+                  }
+                }
+              }
+            },
+            "/movies":{
+              "get":{
+                "tags":["Movies"],
+                  "summary":"API for get Movies",
+                "description":"Get all Movies present in db",
+                "produces":["application/json"],
+                "responses":{
+                  "200":{
+                    "description":"Got all Movies in db",
+                    "schema":{
+                      "$ref":"#definitions/Movie"
+                    }
+                  }
+                }
+              },
+              "post":{
+                "tags":["Movies"],
+              "summary":"API for create Movies",
+              "description":"create movies present in db",
+              
+              "parameters":[
+                {
+                  "name":"Movies",
+                  "description":"Movie params to create new movies",
+                  "in":"body",
+                  "required":"true",
+                  "schema":{
+                    "$ref":"#definitions/Movies"
+                  }
+                }
+              ],
+              "produces":["application/json"],
+              "responses":{
+                "200":{
+                  "description":"New Movie Created",
+                  "schema":{
+                    "$ref":"#definitions/Movies"
+                  }
+                }
+              }
+              }
+
+            },
+            "/movies/{id}":{
+              "parameters":[
+                 {
+                   "name" : "id",
+                    "in": "path",
+                    "required": "true",
+                    "description": "id of the movie",
+                    "type": "string"
+    
+                 }
+              ],
+              "get":{
+                "tags": ["Movies"],
+                "summary": "API Endpoint to find single movie",
+                "description" : "Find one from the database",
+                "produces" : ["application/json"],
+                "responses":{
+                  "200":{
+                    "description" : "Movie has found",
+                    "schema": {
+                     "$ref" : "#definitions/Movies"
+                    }
+                  }
+                }
+              },
+              "put":{
+                "tags": ["Movies"],
+                "summary": "API Endpoint for update movie detail",
+                "description" : "Update the existing movie in database",
+                "parameters":[
+                  {
+                    "name": "Movie",
+                    "description": "Movie params to update the movie detail",
+                    "in": "body",
+                    "schema" : {
+                      "$ref" : "#definitions/Movies"
+                    }
+                  }
+                ],
+                "produces" : ["application/json"],
+                "responses":{
+                  "200":{
+                    "description" : "Movie details has Updated",
+                    "schema": {
+                     "$ref" : "#definitions/Movies"
+                    }
+                  }
+                }
+              },
+              "delete":{
+                "tags": ["Movies"],
+                "summary": "API Endpoint to delete the Movie details",
+                "description" : "Delete movie detail from the database",
+                "produces" : ["application/json"],
+                "responses":{
+                  "200":{
+                    "description" : "Movie detail has deleted",
+                    "schema": {
+                     "$ref" : "#definitions/Movies"
+                    }
+                  }
+                }
+              }
+            },
+            
+              "/rentals":{
+                "get":{
+                  "tags":["Rentals"],
+                    "summary":"API for get Rental Details",
+                  "description":"Get all Rental details present in db",
+                  "produces":["application/json"],
+                  "responses":{
+                    "200":{
+                      "description":"Got all Rental in db",
+                      "schema":{
+                        "$ref":"#definitions/Rentals"
+                      }
+                    }
+                  }
+                },
+                "post":{
+                  "tags":["Rentals"],
+                "summary":"API for create Rental details",
+                "description":"create rental details present in db",
+                
+                "parameters":[
+                  {
+                    "name":"Rentals",
+                    "description":"Rentals params to create new Rental details",
+                    "in":"body",
+                    "required":"true",
+                    "schema":{
+                      "$ref":"#definitions/Rentals"
+                    }
+                  }
+                ],
+                "produces":["application/json"],
+                "responses":{
+                  "200":{
+                    "description":"New Rental deatails Created",
+                    "schema":{
+                      "$ref":"#definitions/Rentals"
+                    }
+                  }
+                }
+                }
+  
+              },
+              "/rentals/{id}":{
+                "parameters":[
+                   {
+                     "name" : "id",
+                      "in": "path",
+                      "required": "true",
+                      "description": "id of a partuclar rental",
+                      "type": "string"
+      
+                   }
+                ],
+                "get":{
+                  "tags": ["Rentals"],
+                  "summary": "API Endpoint to find single Rental details",
+                  "description" : "Find one from the database",
+                  "produces" : ["application/json"],
+                  "responses":{
+                    "200":{
+                      "description" : "Rentals has found",
+                      "schema": {
+                       "$ref" : "#definitions/Rentals"
+                      }
+                    }
+                  }
+                }
+              }
+            
+            
+      },
+      "securityDefinitions":{
+        "api_key":{
+          "type": "apiKey",
+          "name": "api_key",
+          "in": "header"
+        }
+    
+      },
+      "definitions":{
+        "User":{
+          "required":["name","email","password"],
+          "properties":{
+          
+        "name":{
+          "type":"string"
+        },
+        "email":{
+          "type":"string"
+        },
+        "password":{
+          "type":"string"
+        }
+        
+          }
+        },
+        "Users":{
+          "properties":{
+            "docs": {
+              "type" : "array",
+              "$ref": "#definitions/User"
+            }
+            
+          }
+        },
+        "Customers":{
+          "required":["name","phone"],
+          "properties":{
+            "name":{
+              "type":"string"
+            },
+            "phone":{
+              "type":"string"
+            },
+            "isGold":{
+              "type":"boolean"
+            }
+          }
+        },
+        "Customer":{
+          "properties":{
+            "docs": {
+              "type" : "array",
+              "$ref": "#definitions/Customers"
+            }
+            
+          }
+        },
+        "Genres":{
+          "required":["name"],
+          "properties":{
+            "name":{
+              "type":"string"
+            }
+          }
+        },
+        "Genre":{
+          "properties":{
+            "docs": {
+              "type" : "array",
+              "$ref": "#definitions/Genres"
+            }
+            
+          }
+        },
+        "Movies":{
+          "required":["title","genreid","numberInStock","dailyRentalRate"],
+          "properties":{
+          
+        "title":{
+          "type":"string"
+        },
+        "genreId":{
+          "type":"string"
+         
+        },
+        "numberInStock":{
+          "type":"number"
+        },
+        "dailyRentalRate":{
+          "type":"number"
+        }
+        
+          }
+        },
+        "Movie":{
+          "properties":{
+            "docs": {
+              "type" : "array",
+              "$ref": "#definitions/Movies"
+            }
+            
+          }
+        },
+        "Rentals":{
+          "required":["customerId","movieId"],
+          "properties":{
+          
+        "customerId":{
+          "type":"string"
+        },
+        "movieId":{
+          "type":"string"
+        }
+        
+          }
+        }
+
+        
+      }
+}

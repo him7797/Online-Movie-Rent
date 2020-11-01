@@ -1,0 +1,37 @@
+{
+  "name": "vidlypro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "bcrypt": "^4.0.0",
+    "config": "^3.2.6",
+    "email-validator": "^2.0.4",
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "fawn": "^2.1.5",
+    "joi": "^14.3.1",
+    "joi-objectid": "^3.0.1",
+    "joi-password-complexity": "^4.2.1",
+    "joi-phone-number": "^5.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "loadash": "^1.0.0",
+    "lodash": "^4.17.15",
+    "mongoose": "^5.9.6",
+    "nodemon": "^2.0.2",
+    "swagger": "^0.7.5",
+    "swagger-jsdoc": "^4.0.0",
+    "swagger-ui-express": "^4.1.4",
+    "unirest": "^0.6.0",
+    "winston": "^3.2.1",
+    "winston-mongodb": "^5.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "'Himanshu'",
+  "license": "ISC"
+}
